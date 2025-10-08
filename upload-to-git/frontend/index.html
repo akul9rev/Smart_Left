@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart-Left | Food Waste Reducer</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold text-success" href="#">
+                <i class="fas fa-leaf me-2"></i>Smart-Left
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#ingredient-input">Add Ingredients</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#recipe-suggestions">Recipes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#impact-tracking">Impact</a>
+                    </li>
+                </ul>
+                <button id="get-started" class="btn btn-success me-2">Get Started</button>
+                <button id="theme-toggle" class="btn btn-outline-secondary" aria-label="Toggle dark mode">🌙</button>
+            </div>
+        </div>
+    </nav>
+    
+    <section class="hero-section bg-gradient-primary text-white py-5">
+        <div class="container text-center">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <h1 class="display-4 fw-bold mb-4 animate__animated animate__fadeInDown">Reduce Food Waste, Save Money</h1>
+                    <p class="lead mb-4 animate__animated animate__fadeInUp animate__delay-1s">Smart-Left helps you track ingredients, generate creative recipes, and measure your positive environmental impact.</p>
+                    <div class="d-flex justify-content-center gap-3 flex-wrap animate__animated animate__fadeInUp animate__delay-2s">
+                        <span class="badge bg-light text-success px-3 py-2"><i class="fas fa-robot me-1"></i>AI-Powered</span>
+                        <span class="badge bg-light text-success px-3 py-2"><i class="fas fa-recycle me-1"></i>Eco-Friendly</span>
+                        <span class="badge bg-light text-success px-3 py-2"><i class="fas fa-dollar-sign me-1"></i>Budget-Smart</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <main class="container my-5">
+        <section id="ingredient-input" class="card shadow-lg border-0 mb-4 animate__animated animate__fadeInUp">
+            <div class="card-body">
+                <h2 class="card-title text-success mb-4"><i class="fas fa-plus-circle me-2"></i>What ingredients do you have?</h2>
+                <form id="ingredient-form">
+                    <div class="row g-3 mb-3">
+                        <div class="col-md-4">
+                            <input type="text" id="ingredient-name" class="form-control" placeholder="Enter ingredient name" required>
+                        </div>
+                        <div class="col-md-3">
+                            <select id="ingredient-category" class="form-select" aria-label="Ingredient category">
+                                <option value="vegetable">Vegetable</option>
+                                <option value="fruit">Fruit</option>
+                                <option value="protein">Protein</option>
+                                <option value="dairy">Dairy</option>
+                                <option value="grain">Grain</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <input type="date" id="expiry-date" class="form-control" aria-label="Expiry date">
+                        </div>
+                        <div class="col-md-2">
+                            <button type="submit" class="btn btn-success w-100">Add</button>
+                        </div>
+                    </div>
+                </form>
+                <div class="d-flex gap-2 flex-wrap">
+                    <button id="voice-input" class="btn btn-outline-primary" title="Speak ingredients">
+                        <i class="fas fa-microphone me-1"></i>Voice Input
+                    </button>
+                    <button id="photo-input" class="btn btn-outline-primary" title="Scan your fridge">
+                        <i class="fas fa-camera me-1"></i>Upload/Camera
+                    </button>
+                </div>
+                <small class="text-muted mt-2 d-block">Tip: Try saying "tomatoes, chicken, rice".</small>
+            </div>
+        </section>
+
+        <section id="recipe-preferences" class="card shadow-lg border-0 mb-4 animate__animated animate__fadeInUp animate__delay-1s">
+            <div class="card-body">
+                <h2 class="card-title text-success mb-4"><i class="fas fa-cog me-2"></i>Recipe Preferences</h2>
+                <div class="row g-3">
+                    <div class="col-md-3">
+                        <label class="form-label">Cooking Time</label>
+                        <select id="pref-time" class="form-select">
+                            <option value="any">Any</option>
+                            <option value="15">≤ 15 min</option>
+                            <option value="30">≤ 30 min</option>
+                            <option value="60">≤ 60 min</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label">Skill Level</label>
+                        <select id="pref-skill" class="form-select">
+                            <option value="beginner">Beginner</option>
+                            <option value="intermediate">Intermediate</option>
+                            <option value="advanced">Advanced</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label">Equipment</label>
+                        <select id="pref-equipment" class="form-select">
+                            <option value="any">Any</option>
+                            <option value="stovetop">Stovetop</option>
+                            <option value="oven">Oven</option>
+                            <option value="microwave">Microwave</option>
+                            <option value="airfryer">Air Fryer</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3 d-flex align-items-end">
+                        <button id="btn-suggest" class="btn btn-success w-100">Get Suggestions</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="ingredients-list" class="card shadow-lg border-0 mb-4 animate__animated animate__fadeInUp animate__delay-2s">
+            <div class="card-body">
+                <h2 class="card-title text-success mb-4"><i class="fas fa-list me-2"></i>Your Ingredients</h2>
+                <ul id="ingredients-container" class="list-group list-group-flush"></ul>
+            </div>
+        </section>
+
+        <section id="recipe-suggestions" class="card shadow-lg border-0 mb-4 animate__animated animate__fadeInUp animate__delay-3s">
+            <div class="card-body">
+                <h2 class="card-title text-success mb-4"><i class="fas fa-utensils me-2"></i>Recipe Suggestions</h2>
+                <div id="recipes-container" class="row g-4"></div>
+            </div>
+        </section>
+
+        <section id="impact-tracking" class="card shadow-lg border-0 mb-4 animate__animated animate__fadeInUp animate__delay-4s">
+            <div class="card-body">
+                <h2 class="card-title text-success mb-4"><i class="fas fa-chart-line me-2"></i>Your Impact</h2>
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <div class="text-center p-4 bg-light rounded-3">
+                            <i class="fas fa-dollar-sign text-success fa-2x mb-3"></i>
+                            <h3 class="h5 text-muted">Money Saved</h3>
+                            <p id="money-saved" class="h3 text-success fw-bold">$0.00</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="text-center p-4 bg-light rounded-3">
+                            <i class="fas fa-recycle text-success fa-2x mb-3"></i>
+                            <h3 class="h5 text-muted">Waste Prevented</h3>
+                            <p id="waste-prevented" class="h3 text-success fw-bold">0 kg</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="text-center p-4 bg-light rounded-3">
+                            <i class="fas fa-utensils text-success fa-2x mb-3"></i>
+                            <h3 class="h5 text-muted">Recipes Created</h3>
+                            <p id="recipes-created" class="h3 text-success fw-bold">0</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="community" class="card shadow-lg border-0 mb-4 animate__animated animate__fadeInUp animate__delay-5s">
+            <div class="card-body">
+                <h2 class="card-title text-success mb-4"><i class="fas fa-users me-2"></i>Community Feed</h2>
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <div class="card border-0 bg-light">
+                            <div class="card-body">
+                                <h5 class="card-title text-success">Leftover Magic: Tomato Rice Bowl</h5>
+                                <p class="card-text">Used tomatoes and rice to create a quick bowl. Added herbs for a fresh twist!</p>
+                                <small class="text-muted">by @sam • 10m ago</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card border-0 bg-light">
+                            <div class="card-body">
+                                <h5 class="card-title text-success">Zero-Waste Veg Soup</h5>
+                                <p class="card-text">Turned fridge scraps into a hearty soup. No waste, all taste.</p>
+                                <small class="text-muted">by @lee • 1h ago</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container text-center">
+            <p class="mb-0">&copy; 2025 Smart-Left • Reduce Food Waste</p>
+        </div>
+    </footer>
+
+    <!-- Camera Modal -->
+    <div id="camera-modal" class="modal fade" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Scan your fridge</h5>
+                    <button id="close-modal" class="btn-close" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <video id="camera-stream" class="w-100 rounded" autoplay playsinline></video>
+                    <canvas id="snapshot" class="w-100 rounded d-none"></canvas>
+                </div>
+                <div class="modal-footer">
+                    <button id="capture-btn" class="btn btn-primary">Capture</button>
+                    <button id="retake-btn" class="btn btn-secondary d-none">Retake</button>
+                    <button id="analyze-btn" class="btn btn-success d-none">Analyze (Mock)</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div id="login-modal" class="modal fade" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Welcome to Smart-Left</h5>
+                    <button id="login-close" class="btn-close" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="login-form">
+                        <div class="mb-3">
+                            <label for="login-email" class="form-label">Email</label>
+                            <input type="email" id="login-email" class="form-control" placeholder="you@example.com" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="login-password" class="form-label">Password</label>
+                            <input type="password" id="login-password" class="form-control" placeholder="••••••••" required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="login-demo" class="btn btn-outline-secondary">Use Demo</button>
+                    <button type="button" id="show-register" class="btn btn-outline-primary">Register</button>
+                    <button type="submit" form="login-form" class="btn btn-success">Login</button>
+                </div>
+                <div class="modal-footer border-0 pt-0">
+                    <small class="text-muted">New user? Click Register to create an account. <br><strong>Note:</strong> Backend server required for login. Use "Demo" for offline testing.</small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
